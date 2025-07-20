@@ -14,7 +14,7 @@ import {
   Users,
   BarChart3,
 } from "lucide-react";
-import editUserRoleToPublisher from "@/lib/db_functions/EditUserRoleToPublisher";
+import editUserRoleToPublisher from "@/lib/db_functions/editUserRoleToPublisher";
 import toast from "react-hot-toast";
 import logout from "@/lib/auth/logout";
 
