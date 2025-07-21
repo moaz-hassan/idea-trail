@@ -1,31 +1,17 @@
 import getAllArticles from "@/lib/db_functions/getAllArticles";
 import SearchClientPage from "./SearchClientPage";
 
-const extractCategories = (articles) => {
-  const categoryMap = {};
-  
-  articles.forEach(article => {
-    const category = article.category || "Uncategorized";
-    categoryMap[category] = (categoryMap[category] || 0) + 1;
-  });
-
-  return Object.entries(categoryMap).map(([name, count]) => ({
-    name,
-    slug: name.toLowerCase().replace(/ /g, '-'),
-    count
-  })).sort((a, b) => b.count - a.count);
-};
-
-const Search = async () => {
+export default async function page() {
   const articles = await getAllArticles();
-  const categories = extractCategories(articles);
+  const categories = [...new Set(articles.map((article) => article.category))];
+  const allCategories = categories.map((category) => ({
+    name: category,
+    count: articles.filter((article) => article.category === category).length,
+  }));
 
   return (
-    <SearchClientPage
-      articles={articles}
-      categories={categories}
-    />
+    <>
+      <SearchClientPage articles={articles} categories={allCategories} />
+    </>
   );
-};
-
-export default Search;
+}

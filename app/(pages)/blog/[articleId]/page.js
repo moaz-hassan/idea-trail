@@ -87,8 +87,8 @@ const Article = async ({ params }) => {
         title={article.title}
         subtitle={article.subtitle}
         category={article.category}
-        author={article.author}
-        authorId={article.authorId}
+        publisherName={article.publisherName}
+        publisherId={article.publisherId}
         tags={article.tags}
         viewsNum={article.viewsNum}
         publishDate={article.publishDate}

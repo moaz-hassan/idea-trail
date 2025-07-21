@@ -40,7 +40,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Blog", href: "/blog" },
     { name: "Publishers", href: "/publishers" },
-    { name: "Trends", href: "/trends" },
+    // { name: "Trends", href: "/trends" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -144,11 +144,11 @@ export default function Navbar() {
             </>
           )}
 
-          <Moon className="w-5 h-5 cursor-pointer hover:text-blue-500" />
+          {/* <Moon className="w-5 h-5 cursor-pointer hover:text-blue-500" /> */}
         </div>
 
         <div className="lg:hidden flex items-center gap-4">
-          <Moon className="w-6 h-6 bg-gray-200 dark:bg-zinc-700 rounded-full p-1 cursor-pointer" />
+          {/* <Moon className="w-6 h-6 bg-gray-200 dark:bg-zinc-700 rounded-full p-1 cursor-pointer" /> */}
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? (
               <X className="w-6 h-6 cursor-pointer" />

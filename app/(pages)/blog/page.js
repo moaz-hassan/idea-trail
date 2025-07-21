@@ -4,7 +4,6 @@ import LatestBlogArticlesSection from "@/components/blog/LatestBlogArticlesSecti
 import ReaderFavoritesSection from "@/components/blog/ReaderFavoritesSection";
 import IndustryInsightsSection from "@/components/blog/IndustryInsightsSection";
 import QuickReadsSection from "@/components/blog/QuickReadsSection";
-import CuratedCollectionsSection from "@/components/blog/CuratedCollectionsSection";
 import MostViewedSection from "@/components/blog/MostViewedSection";
 import EditorsPicksSection from "@/components/blog/Editor'sPicksSection";
 import TrendingTagsSection from "@/components/blog/TrendingTagsSection";
@@ -24,8 +23,8 @@ const Blog = async () => {
   const industryInsights = calcIndustryInsights();
   const mostViewed = calcMostViewedArticles();
   const editorsPicks = calcEditorPicks();
-  let trendingTags = calcTrendingTags();
-
+  const trendingTags = calcTrendingTags();
+  const quickReads = calcQuickReads();
 
   async function calcFollowedAuthorsArticles() {
     if (!user || !user.following || user.following.length === 0) return [];
@@ -102,37 +101,11 @@ const Blog = async () => {
 
     return sortedTags;
   }
-
-  const moodTags = [
-    "Relaxed",
-    "Inspired",
-    "Curious",
-    "Motivated",
-    "Reflective",
-    "Adventurous",
-  ];
-  const quickReads = [
-    { id: 1, title: "5-Minute Mindfulness Exercises", time: 5 },
-    { id: 2, title: "10 Tips for Better Productivity", time: 3 },
-    { id: 3, title: "7 Ways to Boost Your Creativity", time: 4 },
-  ];
-  const curatedCollections = [
-    {
-      title: "Technology",
-      description: "Explore our handpicked selection of must-read books.",
-      articles: 12,
-    },
-    {
-      title: "Creativity",
-      description: "Discover captivating stories by leading artists.",
-      articles: 8,
-    },
-    {
-      title: "Health",
-      description: "Improve your well-being with science-backed insights.",
-      articles: 15,
-    },
-  ];
+  function calcQuickReads() {
+    return [...allArticles]
+      .sort((a, b) => b.viewsNum + b.saveTimes - (a.viewsNum + a.saveTimes))
+      .slice(0, 3);
+  }
 
   return (
     <div className="mt-20 min-h-screen bg-gray-50 dark:bg-slate-900">
@@ -150,9 +123,6 @@ const Blog = async () => {
             <ReaderFavoritesSection readerFavorites={readerFavorites} />
             <IndustryInsightsSection industryInsights={industryInsights} />
             <QuickReadsSection quickReads={quickReads} />
-            <CuratedCollectionsSection
-              curatedCollections={curatedCollections}
-            />
           </div>
           <div className="space-y-8">
             <MostViewedSection mostViewed={mostViewed} />

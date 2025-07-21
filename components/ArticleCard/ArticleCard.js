@@ -66,13 +66,12 @@ export default function ArticleCard({
             />
             <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
               <Link
-                href={`/blog/category/${
-                  category?.toLowerCase().replace(/\s+/g, "-") ||
-                  "web-development"
+                href={`/blog/search?category=${
+                  category?.toLowerCase().replace(/\s+/g, "-") || ""
                 }`}
                 className="bg-muted px-2 py-0.5 rounded-md text-xs hover:bg-muted/80 transition-colors"
               >
-                {category || "Web Development"}
+                {category || ""}
               </Link>
               <span>{viewsNum || 0} Views</span>
             </div>
@@ -85,13 +84,12 @@ export default function ArticleCard({
           <div className="flex flex-col gap-3">
             <div className="flex flex-row flex-wrap justify-between items-center">
               <Link
-                href={`/blog/category/${
-                  category?.toLowerCase().replace(/\s+/g, "-") ||
-                  "web-development"
+                href={`/blog/search?category=${
+                  category?.toLowerCase().replace(/\s+/g, "-") || ""
                 }`}
                 className=" bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
               >
-                {category || "Web Development"}
+                {category || ""}
               </Link>
               <div className="flex items-center justify-between text-sm text-muted-foreground ">
                 <div className="flex items-center gap-2">

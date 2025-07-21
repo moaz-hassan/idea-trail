@@ -6,8 +6,8 @@ import ArticleReactsBtns from "./ArticleReactsBtns";
 const ArticleHeader = ({
   title,
   subtitle,
-  author,
-  authorId,
+  publisherName,
+  publisherId,
   category,
   tags,
   viewsNum,
@@ -49,7 +49,7 @@ const ArticleHeader = ({
 
           <div className="flex flex-wrap items-center gap-6 mb-8 p-6 ">
             <Link
-              href={`/publishers/${authorId}`}
+              href={`/publishers/${publisherId}`}
               className="flex items-center space-x-3 group hover:bg-white/20 dark:hover:bg-slate-800/20 p-3 rounded-2xl transition-all duration-300 backdrop-blur-sm"
             >
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500/80 to-purple-500/80 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm border border-white/20">
@@ -57,7 +57,7 @@ const ArticleHeader = ({
               </div>
               <div>
                 <p className="font-semibold text-white/90 group-hover:text-white transition-colors duration-300 drop-shadow-sm">
-                  {author}
+                  {publisherName}
                 </p>
                 <p className="text-sm text-white/70 group-hover:text-white/80 transition-colors duration-300">
                   View Profile

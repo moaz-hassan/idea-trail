@@ -1,9 +1,8 @@
 import { ArrowRight, Book, BookOpen, User } from "lucide-react";
 import Link from "next/link";
 import ArticleCard from "./ArticleCard/ArticleCard";
-import { blogPosts } from "@/utils/dummyData";
 
-export default function HeroSection() {
+export default function HeroSection({ headerArticle }) {
   return (
     <div className="min-sm:grid min-sm:grid-cols-[repeat(auto-fill,minmax(450px,1fr))] items-center  mt-16 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-400/5 dark:to-purple-400/5 py-12 px-40 max-md:px-5">
       <div className="flex flex-col gap-6 h-fit mx-auto max-sm:w-[100%]">
@@ -39,19 +38,18 @@ export default function HeroSection() {
       </div>
 
       <div className="mx-auto px-4 py-12 max-sm:w-[100%] min-sm:w-[500px]">
-        {/* Get the most recent article as featured */}
-        {blogPosts.length > 0 && (
-          <ArticleCard
-            title={blogPosts[0].title}
-            description={blogPosts[0].excerpt}
-            category={blogPosts[0].category}
-            publlishedDate={blogPosts[0].date}
-            Articleurl={`/blog/${blogPosts[0].id}`}
-            publisherName={blogPosts[0].author}
-            publisherUrl={`/authors/${encodeURIComponent(blogPosts[0].author)}`}
-            styles="shadow-lg shadow-gray-300"
-          />
-        )}
+        <ArticleCard
+          title={headerArticle.title}
+          description={headerArticle.subtitle}
+          category={headerArticle.category}
+          coverImageUrl={headerArticle.imgUrl}
+          publishedDate={headerArticle.publishDate}
+          articleUrl={`/blog/${headerArticle.id}`}
+          publisherName={headerArticle.publisherName}
+          publisherId={headerArticle.publisherId}
+          viewsNum={headerArticle.viewsNum}
+          styles="shadow-lg shadow-gray-300"
+        />
       </div>
     </div>
   );

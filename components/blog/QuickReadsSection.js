@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import Link from "next/link";
 
 const QuickReadsSection = ({ quickReads }) => {
   return (
@@ -13,12 +13,15 @@ const QuickReadsSection = ({ quickReads }) => {
             className="group bg-white dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-md transition-shadow"
           >
             <div className="flex items-center text-gray-500 dark:text-gray-400 mb-3">
-              <Clock className="w-4 h-4 mr-2" />
-              <span className="text-sm">{item.time} min read</span>
+              <span className="text-sm">{item.savedBy?.length || 0} Saves</span>
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {item.title}
-            </h3>
+            <Link href={`/blog/${item.id}`}>
+              <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {item.title.length > 30
+                  ? item.title.slice(0, 30) + "..."
+                  : item.title}
+              </h3>
+            </Link>
           </article>
         ))}
       </div>

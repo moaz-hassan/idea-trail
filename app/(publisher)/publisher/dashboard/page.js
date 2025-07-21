@@ -7,14 +7,15 @@ import serverCheckSessionValid from "@/lib/auth/serverCheckSessionValid";
 export default async function Page() {
   const user = await serverCheckSessionValid();
   const articles = await getArticlesByIds(user?.user?.articles);
+
   let publisherRecentArticles = [];
   let viewsSum = 0;
   let likesSum = 0;
   let savesSum = 0;
   for (let i = 0; i < articles.length; i++) {
-    viewsSum += articles[i].viewsNum;
-    likesSum += articles[i].likedBy?.length;
-    savesSum += articles[i].savedBy?.length;
+    viewsSum += articles[i].viewsNum || 0;
+    likesSum += articles[i].likedBy?.length || 0;
+    savesSum += articles[i].savedBy?.length || 0;
     if (publisherRecentArticles.length < 5) {
       publisherRecentArticles.push(articles[articles.length - (i + 1)]);
     }
@@ -31,7 +32,7 @@ export default async function Page() {
       <ChartAreaInteractive articles={JSON.stringify(articles)} />
       <div className="grid grid-cols-[repeat(autofill,minmax(250px,1fr))] gap-6">
         <RecentArticlesSection
-          publisherRecentArticles={publisherRecentArticles}
+          RecentArticles={publisherRecentArticles}
         />
       </div>
     </div>

@@ -10,30 +10,29 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-let data = [];
 export default function ChartAreaInteractive({ articles }) {
-  let parsedArticles = JSON.parse(articles);
-  for (let i = parsedArticles.length - 1; i >= 0; i--) {
-    data.push({
+  const parsedArticles = JSON.parse(articles);
+
+  // Get last 10 articles and reverse to maintain recent order
+  const recentArticles = parsedArticles
+    .slice(-10)
+    .reverse()
+    .map((article) => ({
       name:
-        parsedArticles[i]?.title.length > 75
-          ? parsedArticles[i]?.title?.slice(0, 75) +"..."
-          : parsedArticles[i]?.title,
-      value: parsedArticles[i]?.viewsNum,
-    });
-    if (data.length > 10) {
-      break;
-    }
-  }
+        article?.title?.length > 75
+          ? article.title.slice(0, 75) + "..."
+          : article.title,
+      value: article?.viewsNum || 0,
+    }));
 
   return (
     <div className="w-full h-[400px] rounded-xl border bg-white dark:bg-zinc-900 pt-8 pb-16 px-10 shadow-sm *:outline-none">
-      <h2 className="text-lg font-semibold mb-8 text-zinc-800 dark:text-zinc-100 ">
+      <h2 className="text-lg font-semibold mb-8 text-zinc-800 dark:text-zinc-100">
         Monthly Engagement
       </h2>
 
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
+        <AreaChart data={recentArticles}>
           <defs>
             <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />

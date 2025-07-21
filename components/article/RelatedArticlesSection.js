@@ -35,7 +35,7 @@ const RelatedArticlesSection = ({ relatedArticles }) => {
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        {/* <div className="text-center mt-8">
           <Link
             href="/trends"
             className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -43,7 +43,7 @@ const RelatedArticlesSection = ({ relatedArticles }) => {
             <TrendingUp className="w-4 h-4" />
             <span>Explore More Trending Articles</span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
