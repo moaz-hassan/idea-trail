@@ -8,7 +8,6 @@ import ScheduleButton from "@/components/create-article/ScheduleButton";
 import ArticleForm from "@/components/create-article/ArticleForm";
 import ErrorAlert from "@/components/ui/ErrorAlert";
 
-
 export default function CreateArticlePage() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -50,8 +49,7 @@ export default function CreateArticlePage() {
         featuredImage.url,
         false,
         scheduledDate || new Date().toISOString(),
-        isScheduled ? scheduledDate : "",
-        
+        isScheduled ? scheduledDate : ""
       );
 
       if (!res.success) {
