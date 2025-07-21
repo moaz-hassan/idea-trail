@@ -23,7 +23,7 @@ const PublisherProfile = async ({ params }) => {
 
   let totalLikes = 0;
   publisherArticles.forEach((article) => {
-    totalLikes += article.likedBy.length;
+    totalLikes += article?.likedBy?.length;
   });
 
   let totalViews = 0;
@@ -48,7 +48,7 @@ const PublisherProfile = async ({ params }) => {
     following: profileData.profile.following?.length || 0,
     totalViews,
     totalLikes,
-    articlesPublished: publisherArticles.length || 0,
+    articlesPublished: publisherArticles?.length || 0,
     achievements: profileData.profile.achievements || [],
     isVerified: profileData.profile.isVerified || false,
     website: profileData.profile.website || "",
