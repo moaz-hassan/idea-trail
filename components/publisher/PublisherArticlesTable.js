@@ -232,7 +232,7 @@ export default function PublisherArticlesTable() {
                     )}
                     <div className="min-w-0">
                       <Link
-                        href={`/admin/dashboard/articles/${article.id}`}
+                        href={`/blog/${article.id}`}
                         className="text-sm font-medium text-gray-900 hover:text-blue-600 block truncate"
                       >
                         {article.title}
